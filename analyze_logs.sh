@@ -11,7 +11,7 @@ b=$(awk '{count[$1]++} END {for (val in count) {sum++} print sum}' access.log)
 echo "Количество уникальных IP-адресов: $b" >> report.txt
 
 # кол-во запросов по методам
-echo -e "\nКоличество запросов по методам:" >> report.txt
+echo -e "\n\nКоличество запросов по методам:" >> report.txt
 awk '
 	BEGIN {
 		split("PUT DELETE GET POST", arr)
@@ -43,4 +43,5 @@ awk 'BEGIN {
 			}
 		} 
 	       	print "Самый популярный URL:   " max, ip
+
 	}' access.log | sort -r -k2 >> report.txt
